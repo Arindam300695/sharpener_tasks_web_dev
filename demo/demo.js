@@ -53,6 +53,9 @@ console.log(document.querySelector("#items").nextElementSibling);
 console.log(document.querySelector("#items").previousSibling.previousSibling);
 // previousElementSibling
 console.log(document.querySelector("#items").previousElementSibling);
+// setAttribute
+document.querySelector(".title").setAttribute("title", "This is the title");
+console.log(document.querySelector(".title"));
 // creating text node
 const newTextNode = document.createTextNode("New Text Node");
 console.log(newTextNode);
