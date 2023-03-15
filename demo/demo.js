@@ -1,7 +1,10 @@
 const titleRef = document.querySelector("title");
 const headerTitle = document.querySelector("#header-title");
 const addItemRef = document.querySelector(".title");
+const itemsRef = document.querySelector("#items");
 titleRef.innerText = "Modified Item Listener";
 headerTitle.style.borderBottom = "3px solid black";
 addItemRef.style.fontWeight = "bold";
 addItemRef.style.color = "green";
+itemsRef.children[2].style.backgroundColor = "green";
+itemsRef.style.fontWeight = "bold";
