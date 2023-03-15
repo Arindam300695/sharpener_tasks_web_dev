@@ -25,3 +25,7 @@ getElementsByClassNameBtnRef.onclick = function () {
 getElementsByTagNameBtnRef.onclick = function () {
   document.getElementsByTagName("li")[4].style.backgroundColor = "yellow";
 };
+// making the second list item have green background color using document.querySelectorAll()
+document.querySelectorAll("li")[1].style.backgroundColor = "green";
+// making the third list item invisible using document.querySelectorAll()
+document.querySelectorAll("li")[2].style.display = "none";
