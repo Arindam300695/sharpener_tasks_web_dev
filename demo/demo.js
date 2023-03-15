@@ -29,3 +29,41 @@ getElementsByTagNameBtnRef.onclick = function () {
 document.querySelectorAll("li")[1].style.backgroundColor = "green";
 // making the third list item invisible using document.querySelectorAll()
 document.querySelectorAll("li")[2].style.display = "none";
+
+// logging the parentElement of the ul tag in the console
+console.log(document.querySelector("ul").parentElement);
+// logging the last child element of the ul tag in the console
+console.log(document.querySelector("ul").lastElementChild);
+// logging the last child of the div element with the id main in the console
+console.log(document.querySelector("#main").lastChild.previousSibling);
+// creating a child element of the ul tag
+const newChild = document.createElement("li");
+newChild.innerText = "I am newly created child";
+// appending the newly created cild element to the ul tag
+document.querySelector("ul").appendChild(newChild);
+// firstElementChild
+console.log(document.querySelector("ul").firstElementChild);
+// firstChild
+console.log(document.querySelector("ul").firstChild.nextSibling);
+// nextSibling
+console.log(document.querySelector("#items").nextSibling.nextSibling);
+// nextElementSibling
+console.log(document.querySelector("#items").nextElementSibling);
+// previousSibling
+console.log(document.querySelector("#items").previousSibling.previousSibling);
+// previousElementSibling
+console.log(document.querySelector("#items").previousElementSibling);
+// creating text node
+const newTextNode = document.createTextNode("New Text Node");
+console.log(newTextNode);
+// targeting the container
+const container = document.querySelector(".container");
+// targeting the heading having innerText equal to "Item Lister"
+const itemListerRef = document.querySelector("#main-header .container h1");
+// creating word "hello" using text node
+const hello = document.createTextNode("HELLO");
+const hello2 = document.createTextNode("HELLO");
+// adding "hello" word before Item Lister
+container.insertBefore(hello, itemListerRef);
+// adding "hello" word before Item 1
+itemsRef.insertBefore(hello2, document.querySelector("#items").firstChild);
