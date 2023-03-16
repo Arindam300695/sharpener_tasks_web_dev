@@ -21,8 +21,21 @@ btn.onclick = function () {
   let data = JSON.parse(localStorage.getItem(JSON.stringify(obj.userEmail)));
   if (data)
     para.innerText = `name: ${data.userName} email: ${data.userEmail} phone: ${data.userPhone}`;
+  // creating delete button
+  let deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "Delete";
+  //   adding the delete button to the paragraph
+  para.appendChild(deleteBtn);
+  // adding the delete fucntionality
+  deleteBtn.onclick = function (e) {
+    console.log(e.target.parentElement);
+    // deleting the text from the dom
+    e.target.parentElement.innerText = "";
+    // deleting the text from the local storage
+    localStorage.removeItem(JSON.stringify(obj.userEmail));
+  };
   //   making the input field empty after the data gets stored successfully in the local storage
-  user.value = "";
-  email.value = "";
-  phone.value = "";
+  //   user.value = "";
+  //   email.value = "";
+  //   phone.value = "";
 };
