@@ -1,25 +1,28 @@
-function myFunction() {
-  let nameValue = document.getElementById("Name").value;
-  let emailValue = document.getElementById("Email").value;
-  let phoneValue = document.getElementById("Phone").value;
-  let timeValue = document.getElementById("Time").value;
-  let dateValue = document.getElementById("Date").value;
-  //   creating object of the values entered by the user
+const container = document.querySelector("#container");
+const btn = document.querySelector("#btn");
+const user = document.querySelector("#name");
+const email = document.querySelector("#email");
+const phone = document.querySelector("#phone");
+btn.onclick = function () {
+  // creating objects with the data entered by the user
   let obj = {
-    name: nameValue,
-    email: emailValue,
-    phone: phoneValue,
-    time: timeValue,
-    date: dateValue,
+    userName: user.value,
+    userEmail: email.value,
+    userPhone: phone.value,
   };
   // converting the object to string in order to store it in the local storage
-  const string = JSON.stringify(obj);
-  // storing the values in the local storage
-  localStorage.setItem("data", string);
-  // making the input fields empty each time user will click the submit button
-  nameValue = "";
-  emailValue = "";
-  phoneValue = "";
-  timeValue = "";
-  dateValue = "";
-}
+  let string = JSON.stringify(obj);
+  // storing the string inside the local storage
+  localStorage.setItem(JSON.stringify(obj.userEmail), string);
+  // creating a paragraph and appending it to the container
+  let para = document.createElement("p");
+  container.appendChild(para);
+  // getting the vlaues from the local storage
+  let data = JSON.parse(localStorage.getItem(JSON.stringify(obj.userEmail)));
+  if (data)
+    para.innerText = `name: ${data.userName} email: ${data.userEmail} phone: ${data.userPhone}`;
+  //   making the input field empty after the data gets stored successfully in the local storage
+  user.value = "";
+  email.value = "";
+  phone.value = "";
+};
