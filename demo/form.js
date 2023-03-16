@@ -34,8 +34,24 @@ btn.onclick = function () {
     // deleting the text from the local storage
     localStorage.removeItem(JSON.stringify(obj.userEmail));
   };
-  //   making the input field empty after the data gets stored successfully in the local storage
-  //   user.value = "";
-  //   email.value = "";
-  //   phone.value = "";
+
+  // crearing the edit button
+  const editBtn = document.createElement("button");
+  editBtn.innerText = "Edit";
+  //   adding the edit button to the paragraph
+  para.appendChild(editBtn);
+  // adding the edit fucntionality
+  editBtn.onclick = function (e) {
+    let editData = JSON.parse(
+      localStorage.getItem(JSON.stringify(obj.userEmail))
+    );
+    // deleting the text from the dom
+    e.target.parentElement.innerText = "";
+    // deleting the text from the local storage
+    localStorage.removeItem(JSON.stringify(obj.userEmail));
+    // moving back to the input box so that the user can edit the data
+    user.value = editData.userName;
+    email.value = editData.userEmail;
+    phone.value = editData.userPhone;
+  };
 };
