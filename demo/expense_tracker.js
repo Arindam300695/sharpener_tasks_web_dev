@@ -61,10 +61,10 @@ form.onsubmit = function (e) {
   };
   // adding the edit functionality
   editButton.onclick = function () {
+    expenseAmount.value = dataObject.expenseAmountValue;
+    description.value = dataObject.descriptionValue;
+    expenseCategory.value = dataObject.expenseCategoryValue;
     localStorage.removeItem(expenseObject.expenseAmountValue);
     li.remove();
-    expenseAmountValue = dataObject.expenseAmountValue;
-    descriptionValue = dataObject.descriptionValue;
-    expenseCategoryValue = dataObject.expenseCategoryValue;
   };
 };
