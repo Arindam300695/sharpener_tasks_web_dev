@@ -25,4 +25,17 @@ btn.onclick = function () {
   user.value = "";
   email.value = "";
   phone.value = "";
+  // making post request to crud crud api for saving user details to the cloud storage
+  async function getUser() {
+    try {
+      const response = await axios.post(
+        "https://crudcrud.com/api/03b844ea73e94b47aadb10f07b46b34b/employeeData",
+        obj
+      );
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  getUser();
 };
