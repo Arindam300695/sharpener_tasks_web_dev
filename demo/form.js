@@ -3,7 +3,7 @@ const btn = document.querySelector("#btn");
 const user = document.querySelector("#name");
 const email = document.querySelector("#email");
 const phone = document.querySelector("#phone");
-btn.onclick = function () {
+function showUser() {
   // creating objects with the data entered by the user
   let obj = {
     userName: user.value,
@@ -29,7 +29,7 @@ btn.onclick = function () {
   async function getUser() {
     try {
       const response = await axios.post(
-        "https://crudcrud.com/api/03b844ea73e94b47aadb10f07b46b34b/employeeData",
+        "https://crudcrud.com/api/89dcc0bb33e14f00b1a1031d034b43e2/employeeData",
         obj
       );
       console.log(response);
@@ -38,4 +38,25 @@ btn.onclick = function () {
     }
   }
   getUser();
-};
+}
+window.addEventListener("DOMContentLoaded", async () => {
+  const data = await axios.get(
+    "https://crudcrud.com/api/89dcc0bb33e14f00b1a1031d034b43e2/employeeData"
+  );
+  let response = data.data;
+  for (let i = 0; i < response.length; i++) {
+    let para = document.createElement("p");
+    let span = document.createElement("span");
+    span.innerText =
+      "Name: " +
+      response[i].userName +
+      "-> " +
+      "Email: " +
+      response[i].userEmail +
+      "-> " +
+      "Phone: " +
+      response[i].userPhone;
+    para.appendChild(span);
+    container.appendChild(para);
+  }
+});
