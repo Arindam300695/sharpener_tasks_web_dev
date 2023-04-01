@@ -39,24 +39,35 @@ function showUser() {
   }
   getUser();
 }
-window.addEventListener("DOMContentLoaded", async () => {
+let response;
+window.addEventListener("DOMContentLoaded", () => {
+  visibleUsers();
+});
+const visibleUsers = async () => {
   const data = await axios.get(
-    "https://crudcrud.com/api/89dcc0bb33e14f00b1a1031d034b43e2/employeeData"
+    "http://localhost:5000"
+    // "https://crudcrud.com/api/89dcc0bb33e14f00b1a1031d034b43e2/employeeData"
   );
-  let response = data.data;
+  // console.log(data.data);
+  response = data.data;
   for (let i = 0; i < response.length; i++) {
     let para = document.createElement("p");
     let span = document.createElement("span");
+    let deleteUser = document.createElement("button");
+    deleteUser.innerText = "Delete";
     span.innerText =
-      "Name: " +
-      response[i].userName +
-      "-> " +
-      "Email: " +
-      response[i].userEmail +
-      "-> " +
-      "Phone: " +
-      response[i].userPhone;
+      "Name: " + response[i].name + " -> " + "Email: " + response[i].email;
+    // + "-> " +
+    // "Phone: " +
+    // response[i].userPhone;
     para.appendChild(span);
+    para.appendChild(deleteUser);
     container.appendChild(para);
+    deleteUser.onclick = function () {
+      axios
+        .get(`http://localhost:5000/${response[i].name}`)
+        .then((res) => console.log(res.data.msg));
+      para.innerHTML = "";
+    };
   }
-});
+};
